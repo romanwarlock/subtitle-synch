@@ -1,11 +1,14 @@
 #!/bin/bash
-if [ $# -lt 2 ];then
-alf=`basename $0`;
-echo -e "\nUsage:\n\n$alf [filename] [delay] \n\n";exit 0;
+
+if [ $# -lt 2 ]; then
+  alf=$(basename $0)
+  echo -e "\nUsage:\n\n$alf [filename] [delay] \n\n"
+  exit 0
 fi
-cat "$1"|
-	sed 's/ --> /:/'|
-		gawk -v delay=$2 '
+
+cat "$1" |
+  sed 's/ --> /:/' |
+  gawk -v delay=$2 '
 			BEGIN {
 				FS=":"
 			} 
@@ -50,5 +53,5 @@ cat "$1"|
 			$0=sh":"sm":"ss" --> "eh":"em":"es;
 			gsub("\\.",",");
 			print
-		}';
-exit 0;
+		}'
+exit 0
